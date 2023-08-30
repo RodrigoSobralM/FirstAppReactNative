@@ -4,8 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Header from "./src/screens/Header/Header";
 import TelaInicial from "./src/screens/TelaInicial/TelaInicial";
+import TelaTransacao from "./src/screens/TelaTrasacao/TelaTransacao";
 import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font"; // 2.2.4
+import * as Font from "expo-font";
 import {
   Poppins_100Thin,
   Poppins_100Thin_Italic,
@@ -119,11 +120,19 @@ function App() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="TelaInicial">
           <Stack.Screen
-            name="TelaIncial"
+            name="TelaInicial"
             component={TelaInicial}
             options={{ headerTitle: (props) => <Header {...props} /> }}
+          />
+          <Stack.Screen
+            name="TelaTransacao"
+            component={TelaTransacao}
+            options={{
+              headerTitle: (props) => <Header {...props} />,
+              headerBackVisible: false,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
